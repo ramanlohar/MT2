@@ -22,9 +22,19 @@ header .infodiv p{
     font-size: 18px;
 }
 
-#back {
+#back ,#ellipsisBtn {
     background-color: transparent;
     border: none;
     font-size: 30px;
     padding: 10px;
+}
+
+.floating_btn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: var(--black-color);
+    color: var(--white-color);
 }
