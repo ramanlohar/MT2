@@ -1,0 +1,21 @@
+<div class="popup-form-overlay" id="popupOverlay">
+    <div class="popup-form">
+        <span class="close" id="closePopup">&times;</span>
+        <h2>Enter Your Details</h2>
+        <form id="popupForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="mobile">Mobile No:</label>
+            <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+
+            <div class="btn-container">
+                <button type="submit">Save</button>
+                <button type="button" id="cancelBtn">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

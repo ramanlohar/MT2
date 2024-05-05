@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/theme.css">
+    <link rel="stylesheet" href="../CSS/Home.css">
+    <link rel="stylesheet" href="../CSS/Account.css">
+    <link rel="stylesheet" href="../CSS/popup.css">
+</head>
+
+<body>
+    <header>
+        <h1>Money Tracker</h1>
+        <div class="btns">
+            <button onclick="showPopup()">+</button>
+            <button id="ellipsisBtn">&vellip;</button>
+        </div>
+    </header>
+
+    <div class="popup-form-overlay" id="popupOverlay">
+        <div class="popup-form">
+            <span class="close" id="closePopup">&times;</span>
+            <h2>Enter Your Details</h2>
+            <form id="popupForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+    
+                <label for="mobile">Mobile No:</label>
+                <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
+    
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+    
+                <div class="btn-container">
+                    <button type="submit">Save</button>
+                    <button type="button" id="cancelBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+    <!-- Add a section for options -->
+    <div id="optionsSection" class="optionsSection">
+        <ul>
+            <li>Settings</li>
+            <li>Edit</li>
+            <li>Delete</li>
+            <li>Select</li>
+            <li>Add</li>
+        </ul>
+    </div>
+
+    <section>
+
+        <div class="contact">
+            <div>
+
+                <img src="../IMAGES/account_circle_FILL0_wght400_GRAD0_opsz24.png" alt=""> Raman Lohar
+            </div>
+            <div class="amount">00.00</div>
+        </div>
+        
+    </section>
+
+    <footer>
+        <img id="home" class="icons" src="../IMAGES/home_FILL0_wght400_GRAD0_opsz24.png" alt="">
+        <img id="home" class="icons" src="../IMAGES/account_circle_FILL0_wght400_GRAD0_opsz24.png" alt="">
+    </footer>
+</body>
+<script src="../JS/threedot.js"></script>
+<script src="../JS/theme.js"></script>
+<script src="../JS/popup.js"></script>
+
+</html>

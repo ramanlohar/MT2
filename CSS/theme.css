@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+/* Light mode styles */
+body {
+  --main-color: #102629;
+  --white-color: white;
+  --black-color: #102629;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    
+  --main-color: #ffffff;
+  --white-color: #102629;
+  --black-color: rgb(255, 255, 255);
+
+  /* font-size: 62.5%; */
+}
