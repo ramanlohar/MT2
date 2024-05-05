@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--black-color);
+}
+header .infodiv{
+    width: 100%;
+    padding: 20px;
+}
+
+header .infodiv h2{
+    font-size: 30px;
+    text-transform: capitalize;
+}
+header .infodiv p{
+    font-size: 18px;
+}
+
+#back {
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    padding: 10px;
+}

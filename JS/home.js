@@ -43,11 +43,16 @@ function loadcontacts() {
             let contact = JSON.parse(contactData);
             let cdiv = document.createElement("div");
             cdiv.classList.add("contact");
+            
             cdiv.innerHTML = `<div><i class="fa-solid fa-circle-user"></i> ${contact.name}</div>
             <div>
                 <button class="delete dn" data-id="${contact.id}"><i class="fa-solid fa-trash-can"></i></button>
                 <button class="edit dn" data-id="${contact.id}"><i class="fa-solid fa-file-pen"></i></button>
             </div>`;
+            cdiv.addEventListener("click",()=>{
+                localStorage.setItem("active_con",contact.id);
+                window.location.href = "contactinfo.html"
+            })
             contact_section.appendChild(cdiv);
         }
     }
