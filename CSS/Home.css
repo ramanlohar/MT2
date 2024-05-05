@@ -94,9 +94,27 @@ footer {
     /* filter: invert(100%); */
 }
 
-footer button {
+footer button ,.edit,.delete {
     background-color: transparent;
     border: none;
     font-size: x-large;
     color: var(--black-color);
+}
+
+.dn {
+    display: none;
+}
+
+.edit,.delete {
+    font-size: large;
+    margin-right: 10px;
+    color: blue;
+}
+
+.delete {
+    color: red;
+}
+
+.home {
+    color: green;
 }

@@ -31,12 +31,14 @@
     
                 <label for="mobile">Mobile No:</label>
                 <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
+
+                <p id="errormsg"></p>
     
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email">
     
                 <div class="btn-container">
-                    <button type="submit">Save</button>
+                    <button type="submit" id="savebtn">Save</button>
                     <button type="button" id="cancelBtn">Cancel</button>
                 </div>
             </form>
@@ -48,29 +50,30 @@
     <div id="optionsSection" class="optionsSection">
         <ul>
             <li>Settings</li>
-            <li>Edit</li>
-            <li>Delete</li>
-            <li>Select</li>
-            <li>Add</li>
+            <li id="edit_contacts">Edit</li>
         </ul>
     </div>
 
-    <section>
+    <section id="contact_section">
 
-        <div class="contact">
+        <div class="contact" for="1">
             <div><i class="fa-solid fa-circle-user"></i> Raman Lohar</div>
-            <div class="amount">00.00</div>
+            <div>
+                <button><i class="fa-solid fa-trash-can"></i></button>
+                <button><i class="fa-solid fa-file-pen"></i></button>
+            </div>
         </div>
         
     </section>
 
     <footer>
-        <button><i class="fa-solid fa-house"></i></button>
+        <button class="home"><i class="fa-solid fa-house"></i></button>
         <button><i class="fa-solid fa-user"></i></button>
     </footer>
 </body>
 <script src="../JS/threedot.js"></script>
 <script src="../JS/theme.js"></script>
 <script src="../JS/popup.js"></script>
+<script src="../JS/home.js"></script>
 
 </html>

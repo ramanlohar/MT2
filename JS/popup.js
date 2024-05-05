@@ -25,8 +25,8 @@ document.addEventListener('click', function(event) {
 
 closePopupBtn.addEventListener('click', hidePopup);
 cancelBtn.addEventListener('click', hidePopup);
-popupForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    // Handle form submission here (save data or perform validation)
-    hidePopup();
-});
+// popupForm.addEventListener('submit', function(event) {
+//     event.preventDefault();
+//     // Handle form submission here (save data or perform validation)
+//     hidePopup();
+// });
