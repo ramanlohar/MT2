@@ -33,7 +33,7 @@ header {
 header h1 {
     /* color: white;  */
     color: var(--black-color); 
-    font-size: x-large;   
+    font-size: 28px;   
 }
 
 header .btns button{
