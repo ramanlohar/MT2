@@ -14,5 +14,5 @@ function loadinfo(){
 loadinfo();
 
 document.getElementById("back").addEventListener("click",()=>{
-    window.location.href = "home.html";
+    window.location.href = "Home.html";
 })

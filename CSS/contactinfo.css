@@ -4,9 +4,14 @@
   box-sizing: border-box;
 }
 
+body {
+    background-color: var(--white-color);
+}
+
 header {
     display: flex;
     justify-content: space-between;
+    color: var(--black-color);
     border-bottom: 2px solid var(--black-color);
 }
 header .infodiv{
@@ -16,13 +21,16 @@ header .infodiv{
 
 header .infodiv h2{
     font-size: 30px;
+    color: var(--black-color);
     text-transform: capitalize;
 }
 header .infodiv p{
     font-size: 18px;
+    color: var(--black-color);
 }
 
 #back ,#ellipsisBtn {
+    color: var(--black-color);
     background-color: transparent;
     border: none;
     font-size: 30px;
