@@ -19,7 +19,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 90px;
+    height: 100px;
     position: fixed;
     top: 0;
     width: 100%;
@@ -54,7 +54,7 @@ header .btns button:last-child{
 }
 
 section {
-    margin-top: 90px;
+    margin-top: 100px;
     margin-bottom: 69px;
     background-color: var(--white-color);
     /* height: calc(100vh - 70px - 90px); */
@@ -72,6 +72,21 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.co_contact{
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+}
+.co_contact div{
+    margin-left: 10px;
+}
+.p_name {
+    font-size: 24px;
+}
+.mobile_no{
+    font-size: 18px;
 }
 
 .amount {

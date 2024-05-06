@@ -44,7 +44,7 @@ function loadcontacts() {
             let cdiv = document.createElement("div");
             cdiv.classList.add("contact");
             
-            cdiv.innerHTML = `<div class="co_contact"><i class="fa-solid fa-circle-user"></i> ${contact.name}</div>
+            cdiv.innerHTML = `<div class="co_contact"><i class="fa-solid fa-circle-user"></i> <div> <p class="p_name">${contact.name}</p> <p class="mobile_no">${formatMobileNumber(contact.mobile)}</p></div</div>
             <div>
                 <button class="delete dn" data-id="${contact.id}"><i class="fa-solid fa-trash-can"></i></button>
                 <button class="edit dn" data-id="${contact.id}"><i class="fa-solid fa-file-pen"></i></button>
@@ -101,6 +101,25 @@ edit_contacts.addEventListener("click", () => {
 document.getElementById("User_Account").addEventListener("click",()=>{
     window.location.href = "Accounts.html";
 })
+
+
+function formatMobileNumber(mobile) {
+    let numericMobile = mobile.replace(/\D/g, '');
+
+    if (numericMobile.length > 10) {
+        numericMobile = numericMobile.startsWith('0') ? numericMobile.substring(1) : numericMobile;
+        return numericMobile.substring(0, 10);
+    } else {
+        if (numericMobile.length === 10 || numericMobile.startsWith('91')) {
+            return numericMobile;
+        } else {
+            numericMobile = numericMobile.startsWith('+91') ? numericMobile.substring(3) : numericMobile;
+            numericMobile = numericMobile.startsWith('91') ? numericMobile.substring(2) : numericMobile;
+            return numericMobile;
+        }
+    }
+}
+
 
 
 loadcontacts();
