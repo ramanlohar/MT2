@@ -27,9 +27,11 @@ table {
 th {
     padding: 10px;
     text-align: left;
+    font-size: 1.6rem;
     color: var(--black-color);
     background-color: var(--bg-color);
     border: 1px solid var(--black-color);
+    text-align: center;
 }
 
 /* Styles for table data */
@@ -37,6 +39,8 @@ td {
     color: var(--black-color);
     padding: 10px;
     border: 1px solid var(--black-color);
+    font-size: 1.6rem;
+    text-align: center;
 }
 
 /* Rest of your CSS styles go here */

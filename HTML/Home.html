@@ -13,12 +13,12 @@
     <style>
         .text-with-border,.home {
             color: var(--black-color);
-            -webkit-text-stroke: 2px var(--black-color);
+            -webkit-text-stroke: 1px var(--black-color);
             background-clip: text;
         }
-        .f_account {
+        .f_account,.a_account {
             color: var(--white-color);
-            -webkit-text-stroke: 2px var(--black-color);
+            -webkit-text-stroke: 1px var(--black-color);
             background-clip: text;
         }
         </style>
@@ -73,8 +73,9 @@
     </section>
 
     <footer>
-        <button class="home"><i class="fa-solid fa-house"></i></button>
-        <button id="User_Account" class="f_account"><i class="fa-solid fa-user"></i></button>
+        <button id="User_Home" class="home"><i class="fa-solid fa-house"></i></button>
+        <button id="User_Account" class="f_account"><i class="fa-solid fa-wallet"></i></button>
+        <button id="App_Account" class="a_account"><i class="fa-solid fa-circle-user"></i></button>
     </footer>
 </body>
 <script src="../JS/threedot.js"></script>

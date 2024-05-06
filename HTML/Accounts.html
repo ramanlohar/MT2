@@ -6,71 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../CSS/theme.css">
-    <script src="../JS/theme.js"></script>
     <link rel="stylesheet" href="../CSS/Home.css">
     <link rel="stylesheet" href="../CSS/Account.css">
+    <link rel="stylesheet" href="../CSS/popup.css">
     <script src="https://kit.fontawesome.com/a9d95cc0a7.js" crossorigin="anonymous"></script>
     <style>
-             .text-with-border,.f_account {
+        .text-with-border,
+        .f_account {
             color: var(--black-color);
-            -webkit-text-stroke: 2px var(--black-color);
+            -webkit-text-stroke: 1px var(--black-color);
             background-clip: text;
         }
-         .home{
+
+        .home,
+        .a_account {
             color: var(--white-color);
-            -webkit-text-stroke: 2px var(--black-color);
+            -webkit-text-stroke: 1px var(--black-color);
             background-clip: text;
         }
     </style>
 </head>
 
 <body>
-    <script src="../JS/theme.js"></script>
     <header>
-            <h1>Accounts</h1>
-            <div class="btns">
-                <button>+</button>
-                <button id="ellipsisBtn">&vellip;</button>
-                <!-- Added an id to the ellipsis button for easier targeting -->
-            </div>
+        <h1>Accounts</h1>
+        <div class="btns">
+            <button onclick="showPopup()">+</button>
+            <button id="ellipsisBtn">&vellip;</button>
+            <!-- Added an id to the ellipsis button for easier targeting -->
         </div>
     </header>
-    <section id="accounts">
-        <div id="account" class="account">
-            <table>
-                <tr>
-                    <th>Account Name</th>
-                    <th>Total Amount</th>
-                    <th>Initial Amount</th>
-                </tr>
-                <tr>
-                    <td>00</td>
-                    <td>00</td>
-                    <td>00</td>
-                </tr>
-            </table>
+
+    <div class="popup-form-overlay" id="popupOverlay">
+        <div class="popup-form">
+            <span class="close" id="closePopup">&times;</span>
+            <h2>Enter Account Details</h2>
+            <form id="popupForm">
+                <label for="name">Account Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="amount">Initial Amount:</label>
+                <input type="number" id="amount" name="amount" required>
+
+                <p id="errormsg"></p>
+
+                <div class="btn-container">
+                    <button type="button" id="savebtn">Save</button>
+                    <button type="button" id="cancelBtn">Cancel</button>
+                </div>
+            </form>
         </div>
-        <!-- Add a section for options -->
-        <div id="optionsSection" class="optionsSection">
-            <ul>
-                <li>Settings</li>
-                <li>Edit</li>
-                <li>Delete</li>
-                <li>Select</li>
-                <li>Add</li>
-            </ul>
-        </div>
+    </div>
+
+    <section id="account_section">
+        <table id="account_section_table">
+
+        </table>
+        <!-- Content will be dynamically generated here -->
     </section>
 
     <footer>
         <button id="User_Home" class="home"><i class="fa-solid fa-house"></i></button>
-        <button class="f_account"><i class="fa-solid fa-user"></i></button>
+        <button id="User_Account" class="f_account"><i class="fa-solid fa-wallet"></i></button>
+        <button id="App_Account" class="a_account"><i class="fa-solid fa-circle-user"></i></button>
     </footer>
 
     <script src="script.js"></script>
+    <script src="../JS/theme.js"></script>
+    <script src="../JS/accounts.js"></script>
+    <script src="../JS/threedot.js"></script>
+    <script src="../JS/popup.js"></script>
 </body>
-<script src="../JS/theme.js"></script>
-<script src="../JS/accounts.js"></script>
-<script src="../JS/threedot.js"></script>
 
 </html>
