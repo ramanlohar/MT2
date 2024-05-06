@@ -6,7 +6,7 @@ document.getElementById("User_Home").addEventListener("click", () => {
     window.location.href = "Home.html";
 });
 
-let account_section_table = document.getElementById("account_section_table");
+let account_section_table = document.querySelector("#account_section_table");
 let savebtn = document.getElementById("savebtn");
 
 savebtn.addEventListener("click", () => {
@@ -30,7 +30,7 @@ savebtn.addEventListener("click", () => {
             id: aco_count
         };
 
-        localStorage.setItem("con" + aco_count, JSON.stringify(data));
+        localStorage.setItem("aco" + aco_count, JSON.stringify(data));
         hidePopup();
         loadu_accounts();
     } else {
@@ -50,24 +50,23 @@ function loadu_accounts() {
 
     let aco_count = localStorage.getItem("aco_count");
     for (let i = 1; i <= aco_count; i++) {
-        let u_accountKey = "con" + i;
+        let u_accountKey = "aco" + i;
         let u_accountData = localStorage.getItem(u_accountKey);
 
         if (u_accountData) {
             let u_account = JSON.parse(u_accountData);
-            let cdiv = document.createElement("tr");
-            cdiv.classList.add("u_account");
+            let row = document.createElement("tr");
 
-            cdiv.innerHTML = `                
-                    <td>${u_account.name}</td>
-                    <td>${u_account.initial}</td>
-                    <td>${u_account.total}</td>
-                    <td><button class="delete" data-id="${u_account.id}"><i class="fa-solid fa-trash-can"></i></button></td>
-                `;
-                account_section_table.appendChild(cdiv);
+            row.innerHTML = `                
+                <td>${u_account.name}</td>
+                <td>${u_account.initial}</td>
+                <td>${u_account.total}</td>
+                <td><button class="delete" data-id="${u_account.id}"><i class="fa-solid fa-trash-can"></i></button></td>
+            `;
+            account_section_table.appendChild(row);
 
             // Add event listener to the delete button
-            let deleteButton = cdiv.querySelector('.delete');
+            let deleteButton = row.querySelector('.delete');
             deleteButton.addEventListener('click', () => {
                 deleteu_account(u_account.id);
             });
@@ -75,23 +74,22 @@ function loadu_accounts() {
     }
 }
 
-
 function deleteu_account(id) {
-    // Remove the u_account from localStorage
-    localStorage.removeItem('con' + id);
-    // Reload u_accounts
+    // Remove the account from localStorage
+    localStorage.removeItem('aco' + id);
+    // Reload accounts
     loadu_accounts();
 }
 
 function editu_account(id) {
-    // You can implement edit functionality here, e.g., open a popup with the u_account details pre-filled for editing
-    console.log("Editing u_account with ID: " + id);
+    // You can implement edit functionality here, e.g., open a popup with the account details pre-filled for editing
+    console.log("Editing account with ID: " + id);
 }
 
 let edit_u_accounts = document.getElementById("edit_u_accounts");
 edit_u_accounts.addEventListener("click", () => {
-    let all_con = document.querySelectorAll(".delete");
-    all_con.forEach(Element => {
+    let all_aco = document.querySelectorAll(".delete");
+    all_aco.forEach(Element => {
         Element.classList.toggle("dn");
     });
 });
