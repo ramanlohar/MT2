@@ -147,7 +147,7 @@ function loadtransactioninfo() {
                 cdiv.classList.add(element.type);
 
                 cdiv.innerHTML = `
-                <div class="msg_box ${ element.type + "d"}">
+                <div class="msg_box ${element.type + "d"}">
                 <h4 class="motive">${element.motive}</h4>
                 <h4 class="amount">${element.amount}</h4>
                 <h4 class="accounttype">${element.ac_name}</h4>
@@ -158,10 +158,62 @@ function loadtransactioninfo() {
                 `;
 
                 transaction_section.appendChild(cdiv);
+
+                // Add event listener to delete button
+                const delBtn = cdiv.querySelector('.del_btn');
+                delBtn.addEventListener('click', () => {
+                    deleteTransaction(element.id);
+                    loadtransactioninfo(); // Reload messages after deletion
+                });
+                
             });
         }
     }
 }
+
+// Function to delete a transaction
+function deleteTransaction(id) {
+    let active_con = localStorage.getItem("active_con");
+    let conlist = localStorage.getItem("con_list" + active_con);
+
+    if (conlist) {
+        let array = JSON.parse(conlist); // Parse existing data
+        // Find index of transaction with given id
+        const index = array.findIndex(transaction => transaction.id === id);
+        if (index !== -1) {
+            array.splice(index, 1); // Remove transaction from array
+            localStorage.setItem("con_list" + active_con, JSON.stringify(array)); // Save updated data
+            loadtransactioninfo(); // Reload transactions after deletion
+        }
+    }
+}
+
+// Event listener for delete button
+function attachDeleteEventListeners() {
+    const delBtns = document.querySelectorAll('.del_btn');
+    delBtns.forEach(delBtn => {
+        delBtn.addEventListener('click', (event) => {
+            const messageId = event.target.parentElement.querySelector('.time').textContent;
+            // Show confirmation modal
+            confirmationModal.style.display = "block";
+            // Save the transaction ID in a global variable to access it later
+            window.transactionIdToDelete = messageId;
+        });
+    });
+}
+
+// Event listener for confirm delete button
+confirmDeleteBtn.addEventListener('click', () => {
+    deleteTransaction(window.transactionIdToDelete);
+    confirmationModal.style.display = "none"; // Hide confirmation modal
+});
+
+// Event listener for cancel delete button
+cancelDeleteBtn.addEventListener('click', () => {
+    confirmationModal.style.display = "none"; // Hide confirmation modal
+});
+
+
 
 function getTimeFromDate(dateString) {
     const date = new Date(dateString);
