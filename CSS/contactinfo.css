@@ -9,10 +9,16 @@ body {
 }
 
 header {
+    position: fixed;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     color: var(--black-color);
     border-bottom: 2px solid var(--black-color);
+    height: 90px;
+    top: 0;
+    z-index: 10;
+    background-color: var(--white-color);
 }
 header .infodiv{
     width: 100%;
@@ -45,4 +51,75 @@ header .infodiv p{
     border-radius: 20px;
     background-color: var(--black-color);
     color: var(--white-color);
+}
+
+#transaction_section {
+    margin: 95px 10px;
+}
+.transaction-label.highlight {
+    background-color: lightblue;
+}
+
+#errormsgpopup{
+    font-size: large;
+    color: var(--black-color);
+}
+
+/* <div class="msg_box">
+            <h4 class="motive">Laptop</h4>
+            <h4 class="amount">80000</h4>
+            <h4 class="accounttype">Cash</h4>
+            <p class="time">12:00pm</p>
+        </div> */
+.msg_box {
+    background-color: rgba(172, 255, 47, 0.171);
+    max-width: 70%;
+    min-width: 20%;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    color: var(--black-color);
+    box-shadow: 0px 2px 2px 2px var(--black-s-color);
+}
+
+.msg_box h4 {
+    padding: 2px;
+}
+
+.msg_box p {
+    text-align: right;
+}
+
+.send {
+    display: flex;
+    justify-content: end;
+    /* float: right; */
+    /* background-color: rgba(255, 61, 47, 0.521); */
+    text-align: right;
+}
+
+.sendd{
+    box-shadow: 2px 2px 2px 0px var(--black-s-color);
+    background-color: rgba(255, 61, 47, 0.24);
+
+}
+
+/* CSS for common date headers */
+.date-header {
+    position: sticky;
+    top : 90px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: var(--black-color);
+    border-radius: 5px;
+    text-align: center;
+    max-width: 40%;;
+    margin: 10px auto;
+    font-size: small;
+    z-index: 2;
 }

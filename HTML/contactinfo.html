@@ -11,6 +11,7 @@
     <script src="https://kit.fontawesome.com/a9d95cc0a7.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <script src="../JS/theme.js"></script>
     <header>
         <button id="back"><i class="fa-solid fa-arrow-left"></i></button>
         <div class="infodiv">
@@ -20,7 +21,62 @@
         <button id="ellipsisBtn">&vellip;</button>
     </header>
 
-    <button class="floating_btn"><i class="fa-solid fa-plus"></i></button>
+    <div class="popup-form-overlay" id="popupOverlay">
+        <div class="popup-form">
+            <span class="close" id="closePopup">&times;</span>
+            <h2>Enter Your Transaction Details</h2>
+            <form id="popupForm">
+                <!-- Money Transaction Type -->
+                <div class="transaction-type">
+                    <label for="money-send" class="transaction-label" id="sendLabel">Money Send</label>
+                    <input type="radio" id="money-send" name="transaction-type" value="send" hidden>
+                    
+                    <label for="money-receive" class="transaction-label" id="receiveLabel">Money Receive</label>
+                    <input type="radio" id="money-receive" name="transaction-type" value="receive" hidden>
+                </div>
+
+                <label for="actype">Account</label>
+                <select name="" id="actype">
+                </select>
+    
+                <!-- Motive of Transaction -->
+                <label for="motive">Motive:</label>
+                <input type="text" id="motive" name="motive" required>
+    
+                <!-- Amount -->
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" required>
+    
+                <!-- Date -->
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <p id="errormsgpopup"></p>
+    
+                <div class="btn-container">
+                    <button type="submit" id="savebtn">Save</button>
+                    <button type="button" id="cancelBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <section id="transaction_section">
+        <div>
+            <div class="msg_box">
+                <h4 class="motive">Laptop</h4>
+                <h4 class="amount">80000</h4>
+                <h4 class="accounttype">Cash</h4>
+                <p class="time">12:00pm</p>
+            </div>
+        </div>
+        
+
+    </section>
+    
+
+    <button class="floating_btn" onclick="showPopup()"><i class="fa-solid fa-plus"></i></button>
 </body>
 <script src="../JS/contactinfo.js"></script>
+<script src="../JS/popup.js"></script>
 </html>
