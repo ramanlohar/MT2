@@ -76,3 +76,23 @@
 .popup-form button[type="button"]:hover {
     opacity: 0.8;
 }
+
+/* CSS for transaction type labels */
+.transaction-label {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: large;
+    color: var(--black-color);
+}
+
+/* CSS for select dropdown */
+#actype {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: var(--black-color);
+    font-size: large;
+    background-color: transparent;
+}

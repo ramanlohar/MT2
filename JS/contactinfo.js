@@ -36,6 +36,7 @@ receiveRadio.addEventListener('click', () => {
 });
 
 savebtn.addEventListener("click", () => {
+    
     const transactionType = document.querySelector('input[name="transaction-type"]:checked');
     const actype = document.getElementById("actype").value;
     const motive = document.getElementById("motive").value;
@@ -45,7 +46,7 @@ savebtn.addEventListener("click", () => {
     const errormsgpopup = document.getElementById("errormsgpopup");
 
     // Check if any of the required fields are empty
-    if (!transactionType) {
+    if (!transactionType.value) {
         errormsgpopup.innerHTML = "Please choose a transaction type";
         none();
         return;
@@ -79,10 +80,14 @@ savebtn.addEventListener("click", () => {
 
     const uniqueId = generateUniqueId();
 
+    let acname = localStorage.getItem("aco"+actype);
+    acname = JSON.parse(acname);
+
     // Create a transaction object
     const transaction = {
         type: transactionType.value,
-        actype: actype,
+        ac_id: actype,
+        ac_name:acname.name,
         motive: motive,
         amount: amount,
         date: date,
@@ -145,8 +150,9 @@ function loadtransactioninfo() {
                 <div class="msg_box ${ element.type + "d"}">
                 <h4 class="motive">${element.motive}</h4>
                 <h4 class="amount">${element.amount}</h4>
-                <h4 class="accounttype">${element.actype}</h4>
-                <p class="time">${getTimeFromDate(element.date)}</p>
+                <h4 class="accounttype">${element.ac_name}</h4>
+                <p class="time">${getDateFromUniqueId(element.id)}</p>
+                <p class="time">${getTimeFromUniqueId(element.id)}</p>
                 </div>
                 `;
 
@@ -171,23 +177,54 @@ function generateUniqueId() {
 }
 
 
-// function getDateFromUniqueId(uniqueId) {
-//     // Extract the timestamp part from the unique ID
-//     const timestampStr = uniqueId.replace('ID_', '');
+// Function to get formatted date from unique ID
+function getDateFromUniqueId(uniqueId) {
+    // Extract the timestamp part from the unique ID
+    const timestampStr = uniqueId.replace('ID_', '');
 
-//     // Convert the timestamp string back to a number
-//     const timestamp = parseInt(timestampStr);
+    // Convert the timestamp string back to a number
+    const timestamp = parseInt(timestampStr);
 
-//     // Create a Date object using the timestamp
-//     const date = new Date(timestamp);
+    // Create a Date object using the timestamp
+    const date = new Date(timestamp);
 
-//     return date;
-// }
+    // Get individual date components
+    const day = date.getDate();
+    const month = date.getMonth() + 1; // Months are zero-based, so add 1
+    const year = date.getFullYear();
 
-// // Example usage:
-// const uniqueId = 'ID_1643094712356'; // Example unique ID
-// const dateFromUniqueId = getDateFromUniqueId(uniqueId);
-// console.log(dateFromUniqueId); // Output: Wed Jan 25 2022 11:31:52 GMT+0000 (Coordinated Universal Time)
+    // Construct the formatted date string
+    const formattedDate = `${day}-${month}-${year}`;
+
+    return formattedDate;
+}
+
+// Function to get formatted time from unique ID
+function getTimeFromUniqueId(uniqueId) {
+    // Extract the timestamp part from the unique ID
+    const timestampStr = uniqueId.replace('ID_', '');
+
+    // Convert the timestamp string back to a number
+    const timestamp = parseInt(timestampStr);
+
+    // Create a Date object using the timestamp
+    const date = new Date(timestamp);
+
+    // Get individual time components
+    let hours = date.getHours();
+    const minutes = ('0' + date.getMinutes()).slice(-2); // Ensure two digits for minutes
+
+    // Convert hours to 12-hour format and determine AM/PM
+    const ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12 || 12; // Convert to 12-hour format
+    const formattedHours = ('0' + hours).slice(-2); // Ensure two digits for hours
+
+    // Construct the formatted time string
+    const formattedTime = `${formattedHours}:${minutes}${ampm}`;
+
+    return formattedTime;
+}
+
 
 function loadacoptions(){
     let actype = document.getElementById("actype");
@@ -199,7 +236,7 @@ function loadacoptions(){
             aconame = JSON.parse(aconame);  
             
             let op = document.createElement("option");
-            op.value = aconame.name;
+            op.value = aconame.id;
             op.textContent = aconame.name;
             
             actype.appendChild(op);

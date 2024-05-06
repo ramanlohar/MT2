@@ -122,4 +122,5 @@ header .infodiv p{
     margin: 10px auto;
     font-size: small;
     z-index: 2;
+    color: var(--white-color);
 }

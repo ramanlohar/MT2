@@ -59,8 +59,8 @@ function loadu_accounts() {
 
             row.innerHTML = `                
                 <td>${u_account.name}</td>
-                <td>${u_account.initial}</td>
                 <td>${u_account.total}</td>
+                <td>${u_account.initial}</td>
                 <td><button class="delete" data-id="${u_account.id}"><i class="fa-solid fa-trash-can"></i></button></td>
             `;
             account_section_table.appendChild(row);
@@ -86,13 +86,16 @@ function editu_account(id) {
     console.log("Editing account with ID: " + id);
 }
 
-let edit_u_accounts = document.getElementById("edit_u_accounts");
-edit_u_accounts.addEventListener("click", () => {
-    let all_aco = document.querySelectorAll(".delete");
-    all_aco.forEach(Element => {
-        Element.classList.toggle("dn");
-    });
-});
+// Assuming `edit_u_accounts` is defined in your HTML
+// let edit_u_accounts = document.getElementById("edit_u_accounts");
+
+// edit_u_accounts.addEventListener("click", () => {
+//     let all_aco = document.querySelectorAll(".delete");
+//     all_aco.forEach(Element => {
+//         Element.classList.toggle("dn");
+//     });
+// });
+
 
 document.getElementById("User_Account").addEventListener("click", () => {
     window.location.href = "Accounts.html";
