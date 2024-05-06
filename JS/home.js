@@ -35,28 +35,39 @@ function loadcontacts() {
     contact_section.innerHTML = "";
 
     let con_count = localStorage.getItem("con_count");
+    let contacts = [];
     for (let i = 1; i <= con_count; i++) {
         let contactKey = "con" + i;
         let contactData = localStorage.getItem(contactKey);
         
         if(contactData){
             let contact = JSON.parse(contactData);
-            let cdiv = document.createElement("div");
-            cdiv.classList.add("contact");
-            
-            cdiv.innerHTML = `<div class="co_contact"><i class="fa-solid fa-circle-user"></i> <div> <p class="p_name">${contact.name}</p> <p class="mobile_no">${formatMobileNumber(contact.mobile)}</p></div</div>
-            <div>
-                <button class="delete dn" data-id="${contact.id}"><i class="fa-solid fa-trash-can"></i></button>
-                <button class="edit dn" data-id="${contact.id}"><i class="fa-solid fa-file-pen"></i></button>
-            </div>`;
-            cdiv.querySelector(".co_contact").addEventListener("click", () => {
-                localStorage.setItem("active_con", contact.id);
-                window.location.href = "contactinfo.html";
-            });
-            
-            contact_section.appendChild(cdiv);
+            contacts.push(contact);
         }
     }
+
+    // Sort contacts alphabetically by name
+    contacts.sort((a, b) => {
+        return a.name.localeCompare(b.name);
+    });
+
+    // Display sorted contacts
+    contacts.forEach(contact => {
+        let cdiv = document.createElement("div");
+        cdiv.classList.add("contact");
+        
+        cdiv.innerHTML = `<div class="co_contact"><i class="fa-solid fa-circle-user"></i> <div class="con_info_div"> <p class="p_name">${contact.name}</p> <p class="mobile_no">${formatMobileNumber(contact.mobile)}</p></div></div>
+        <div>
+            <button class="delete dn" data-id="${contact.id}"><i class="fa-solid fa-trash-can"></i></button>
+            <button class="edit dn" data-id="${contact.id}"><i class="fa-solid fa-file-pen"></i></button>
+        </div>`;
+        cdiv.querySelector(".co_contact").addEventListener("click", () => {
+            localStorage.setItem("active_con", contact.id);
+            window.location.href = "contactinfo.html";
+        });
+        
+        contact_section.appendChild(cdiv);
+    });
 
     // Add event listeners for edit and delete buttons
     let deleteButtons = document.querySelectorAll('.delete');
@@ -77,12 +88,8 @@ function loadcontacts() {
     });
 }
 
-function deleteContact(id) {
-    // Remove the contact from localStorage
-    localStorage.removeItem('con' + id);
-    // Reload contacts
-    loadcontacts();
-}
+
+
 
 function editContact(id) {
     // You can implement edit functionality here, e.g., open a popup with the contact details pre-filled for editing

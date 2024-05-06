@@ -79,8 +79,9 @@ section {
     align-items: center;
     font-size: 40px;
 }
-.co_contact div{
+.co_contact .con_info_div{
     margin-left: 10px;
+    width: 100%;
 }
 .p_name {
     font-size: 20px;
