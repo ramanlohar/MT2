@@ -154,6 +154,7 @@ function loadtransactioninfo() {
                 <p class="time">${getDateFromUniqueId(element.id)}</p>
                 <p class="time">${getTimeFromUniqueId(element.id)}</p>
                 </div>
+                <button class="del_btn dn"><i class="fa-solid fa-trash-can"></i></button>
                 `;
 
                 transaction_section.appendChild(cdiv);
@@ -245,6 +246,15 @@ function loadacoptions(){
 
 
 }
+
+let editbtn = document.getElementById("editbtn");
+editbtn.addEventListener("click", () => {
+    let all_del_btn = document.querySelectorAll(".del_btn");
+    all_del_btn.forEach(btn => {
+        btn.classList.toggle("dn");
+    });
+});
+
 
 loadacoptions();
 loadtransactioninfo()

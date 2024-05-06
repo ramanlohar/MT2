@@ -35,12 +35,16 @@ header .infodiv p{
     color: var(--black-color);
 }
 
-#back ,#ellipsisBtn {
+#back ,#editbtn {
     color: var(--black-color);
     background-color: transparent;
     border: none;
     font-size: 30px;
     padding: 10px;
+}
+
+#editbtn {
+    font-size: 20px;
 }
 
 .floating_btn{
@@ -123,4 +127,17 @@ header .infodiv p{
     font-size: small;
     z-index: 2;
     color: var(--white-color);
+}
+
+.del_btn {
+    float: right;
+    font-size: 20px;
+    color: var(--black-color);
+    background-color: transparent;
+    padding: 10px;
+    border: none;
+}
+
+.dn {
+    display: none;
 }
