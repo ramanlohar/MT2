@@ -11,17 +11,26 @@
     <link rel="stylesheet" href="../CSS/popup.css">
     <script src="https://kit.fontawesome.com/a9d95cc0a7.js" crossorigin="anonymous"></script>
     <style>
-        .text-with-border,.home {
+        .text-with-border,
+        .home {
             color: var(--black-color);
             -webkit-text-stroke: 1px var(--black-color);
             background-clip: text;
         }
-        .f_account,.a_account {
+
+        .f_account,
+        .a_account {
             color: var(--white-color);
             -webkit-text-stroke: 1px var(--black-color);
             background-clip: text;
         }
-        </style>
+        
+        footer button p {
+            font-size: 15px;
+            font-weight: 100;
+            -webkit-text-stroke:none;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,7 +40,7 @@
         <div class="btns">
             <button class="h_btn" onclick="showPopup()"><i class="fa-solid fa-user-plus"></i></button>
             <button class="h_btn" id="edit_contacts"><i class="fa-solid fa-user-pen"></i></button>
-            <button class="h_btn" id="settings"><i class="fa-solid fa-gear"></i></i></button>
+            <!-- <button class="h_btn" id="settings"><i class="fa-solid fa-gear"></i></i></button> -->
         </div>
     </header>
 
@@ -73,9 +82,15 @@
     </section>
 
     <footer>
-        <button id="User_Home" class="home"><i class="fa-solid fa-house"></i></button>
-        <button id="User_Account" class="f_account"><i class="fa-solid fa-wallet"></i></button>
-        <button id="App_Account" class="a_account"><i class="fa-solid fa-circle-user"></i></button>
+        <button id="User_Home" class="home"><i class="fa-solid fa-house"></i><br>
+            <p>home</p>
+        </button>
+        <button id="User_Account" class="f_account"><i class="fa-solid fa-wallet"></i><br>
+            <p>Money</p>
+        </button>
+        <button id="App_Account" class="a_account"><i class="fa-solid fa-circle-user"></i><br>
+            <p>User</p>
+        </button>
     </footer>
 </body>
 <!-- <script src="../JS/threedot.js"></script> -->

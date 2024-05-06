@@ -83,10 +83,10 @@ section {
     margin-left: 10px;
 }
 .p_name {
-    font-size: 24px;
+    font-size: 20px;
 }
 .mobile_no{
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .amount {
@@ -119,6 +119,7 @@ footer button ,.edit,.delete {
     font-size: x-large;
     color: var(--black-color);
 }
+
 
 .dn {
     display: none;
