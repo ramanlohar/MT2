@@ -10,14 +10,27 @@
     <link rel="stylesheet" href="../CSS/Account.css">
     <link rel="stylesheet" href="../CSS/popup.css">
     <script src="https://kit.fontawesome.com/a9d95cc0a7.js" crossorigin="anonymous"></script>
+    <style>
+        .text-with-border,.home {
+            color: var(--black-color);
+            -webkit-text-stroke: 2px var(--black-color);
+            background-clip: text;
+        }
+        .f_account {
+            color: var(--white-color);
+            -webkit-text-stroke: 2px var(--black-color);
+            background-clip: text;
+        }
+    </style>
 </head>
 
 <body>
     <header>
         <h1>Money Tracker</h1>
         <div class="btns">
-            <button onclick="showPopup()">+</button>
-            <button id="ellipsisBtn">&vellip;</button>
+            <button class="h_btn" onclick="showPopup()"><i class="fa-solid fa-user-plus"></i></button>
+            <button class="h_btn" id="edit_contacts"><i class="fa-solid fa-user-pen"></i></button>
+            <button class="h_btn" id="settings"><i class="fa-solid fa-gear"></i></i></button>
         </div>
     </header>
 
@@ -28,15 +41,15 @@
             <form id="popupForm">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
-    
+
                 <label for="mobile">Mobile No:</label>
                 <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
 
                 <p id="errormsg"></p>
-    
+
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email">
-    
+
                 <div class="btn-container">
                     <button type="submit" id="savebtn">Save</button>
                     <button type="button" id="cancelBtn">Cancel</button>
@@ -44,15 +57,7 @@
             </form>
         </div>
     </div>
-    
 
-    <!-- Add a section for options -->
-    <div id="optionsSection" class="optionsSection">
-        <ul>
-            <li>Settings</li>
-            <li id="edit_contacts">Edit</li>
-        </ul>
-    </div>
 
     <section id="contact_section">
 
@@ -63,12 +68,12 @@
                 <button><i class="fa-solid fa-file-pen"></i></button>
             </div>
         </div>
-        
+
     </section>
 
     <footer>
         <button class="home"><i class="fa-solid fa-house"></i></button>
-        <button><i class="fa-solid fa-user"></i></button>
+        <button id="User_Account" class="f_account"><i class="fa-solid fa-user"></i></button>
     </footer>
 </body>
 <script src="../JS/threedot.js"></script>

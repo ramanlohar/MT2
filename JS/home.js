@@ -97,5 +97,9 @@ edit_contacts.addEventListener("click", () => {
 });
 
 
+document.getElementById("User_Account").addEventListener("click",()=>{
+    window.location.href = "Accounts.html";
+})
+
 
 loadcontacts();

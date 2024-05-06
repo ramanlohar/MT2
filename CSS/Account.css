@@ -67,3 +67,17 @@ td {
     cursor: pointer;
     margin-bottom: 5px;
 }
+
+.hfdiv {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#back {
+    color: var(--black-color);
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    padding-right: 20px;
+}

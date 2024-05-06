@@ -8,15 +8,29 @@
     <link rel="stylesheet" href="../CSS/theme.css">
     <link rel="stylesheet" href="../CSS/Home.css">
     <link rel="stylesheet" href="../CSS/Account.css">
+    <script src="https://kit.fontawesome.com/a9d95cc0a7.js" crossorigin="anonymous"></script>
+    <style>
+             .text-with-border,.f_account {
+            color: var(--black-color);
+            -webkit-text-stroke: 2px var(--black-color);
+            background-clip: text;
+        }
+         .home{
+            color: var(--white-color);
+            -webkit-text-stroke: 2px var(--black-color);
+            background-clip: text;
+        }
+    </style>
 </head>
 
 <body>
     <header>
-        <h1>Accounts</h1>
-        <div class="btns">
-            <button>+</button>
-            <button id="ellipsisBtn">&vellip;</button>
-            <!-- Added an id to the ellipsis button for easier targeting -->
+            <h1>Accounts</h1>
+            <div class="btns">
+                <button>+</button>
+                <button id="ellipsisBtn">&vellip;</button>
+                <!-- Added an id to the ellipsis button for easier targeting -->
+            </div>
         </div>
     </header>
     <section id="accounts">
@@ -47,12 +61,14 @@
     </section>
 
     <footer>
-        <img class="icons" src="../IMAGES/home_FILL0_wght400_GRAD0_opsz24.png" alt="">
-        <img class="icons" src="../IMAGES/account_circle_FILL0_wght400_GRAD0_opsz24.png" alt="">
+        <button id="User_Home" class="home"><i class="fa-solid fa-house"></i></button>
+        <button class="f_account"><i class="fa-solid fa-user"></i></button>
     </footer>
 
     <script src="script.js"></script>
 </body>
 <script src="../JS/theme.js"></script>
+<script src="../JS/accounts.js"></script>
 <script src="../JS/threedot.js"></script>
+
 </html>
