@@ -15,12 +15,13 @@ savebtn.addEventListener("click",()=>{
             con_count = 1       
             localStorage.setItem("con_count", con_count);
         }
-
+        let uniqueId = generateUniqueId();
         let data = {
             name: name.value,
             mobile: mobile.value,
             email: email.value || "",
-            id: con_count
+            id: con_count,
+            staketime: uniqueId
         };
 
         localStorage.setItem("con"+con_count, JSON.stringify(data));
@@ -126,6 +127,13 @@ function formatMobileNumber(mobile) {
         }
     }
 }
+
+function generateUniqueId() {
+    const timestamp = new Date().getTime(); // Get current time in milliseconds
+    const uniqueId = timestamp; // Combine with a prefix (e.g., 'ID_')
+    return uniqueId;
+}
+
 
 
 

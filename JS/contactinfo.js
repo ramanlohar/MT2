@@ -106,6 +106,7 @@ savebtn.addEventListener("click", () => {
     array.push(transaction); // Add new transaction
 
     localStorage.setItem("con_list" + active_con, JSON.stringify(array)); // Save updated data
+    updatestaketime(active_con);
     hidePopup();
     loadtransactioninfo()
 });
@@ -166,6 +167,8 @@ function loadtransactioninfo() {
             `;
 
             transaction_section.appendChild(cdiv);
+
+                      
 
             // Add event listener to delete button
             const delBtn = cdiv.querySelector('.del_btn');
@@ -262,6 +265,7 @@ function performDelete(id) {
         if (index !== -1) {
             array.splice(index, 1); // Remove transaction from array
             localStorage.setItem("con_list" + active_con, JSON.stringify(array)); // Save updated data
+            updatestaketime(active_con)
             loadtransactioninfo(); // Reload transactions after deletion
         }
     }
@@ -362,6 +366,30 @@ editbtn.addEventListener("click", () => {
         btn.classList.toggle("dn");
     });
 });
+
+function updatestaketime(id) {
+    let contact = localStorage.getItem("con" + id);
+    contact = JSON.parse(contact);
+
+    let uniqueId2 = generateUniqueId2();
+    let data = {
+        name: contact.name,
+        mobile: contact.mobile,
+        email: contact.email || "",
+        id: contact.id,
+        staketime: uniqueId2
+    };
+
+    localStorage.setItem("con" + id, JSON.stringify(data));
+}
+
+
+function generateUniqueId2() {
+    const timestamp = new Date().getTime(); // Get current time in milliseconds
+    const uniqueId = 'ID_' + timestamp; // Combine with a prefix (e.g., 'ID_')
+    return uniqueId;
+}
+
 
 
 loadacoptions();
