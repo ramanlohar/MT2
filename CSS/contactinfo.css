@@ -60,13 +60,35 @@ header .infodiv p{
 #transaction_section {
     margin: 95px 10px;
 }
+.transaction-type-h{
+    color: var(--black-color);
+    font-size: 18px;
+    padding: 10px 0;
+}
+.transaction-type{
+    display: flex;
+}
+
+.transaction-type label{
+    padding: 8px;
+    width: 50%;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid var(--black-color);
+    background-color: rgba(0, 241, 12, 0.116);
+}
+
+.transaction-label:first-child{
+    background-color: rgba(255, 0, 0, 0.116);
+}
+
 .transaction-label.highlight {
-    background-color: lightblue;
+    background-color: rgba(230, 224, 173, 0.582);
 }
 
 #errormsgpopup{
     font-size: large;
-    color: var(--black-color);
+    color: red;
 }
 
 /* <div class="msg_box">
@@ -136,6 +158,12 @@ header .infodiv p{
     background-color: transparent;
     padding: 10px;
     border: none;
+}
+
+.receive {
+    /* background-color: aqua; */
+    display: flex;
+    /* justify-content: space-between; */
 }
 
 .dn {

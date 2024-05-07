@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="../CSS/confomationpopup.css">
     <script src="https://kit.fontawesome.com/a9d95cc0a7.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <script src="../JS/theme.js"></script>
     <header>
@@ -24,14 +26,14 @@
 
     <div id="confirmationModal" class="modal">
         <div class="modal-content">
-          <p>Are you sure you want to delete this transaction?</p>
-          <button id="confirmDeleteBtn">Confirm</button>
-          <button id="cancelDeleteBtn">Cancel</button>
+            <p>Are you sure you want to delete this transaction?</p>
+            <button id="confirmDeleteBtn">Confirm</button>
+            <button id="cancelDeleteBtn">Cancel</button>
         </div>
-      </div>
-      
-      
-      
+    </div>
+
+
+
 
     <div class="popup-form-overlay" id="popupOverlay">
         <div class="popup-form">
@@ -39,10 +41,11 @@
             <h2>Enter Your Transaction Details</h2>
             <form id="popupForm">
                 <!-- Money Transaction Type -->
+                <p class="transaction-type-h">Transaction Type</p>
                 <div class="transaction-type">
                     <label for="money-send" class="transaction-label" id="sendLabel">Money Send</label>
                     <input type="radio" id="money-send" name="transaction-type" value="send" hidden>
-                    
+
                     <label for="money-receive" class="transaction-label" id="receiveLabel">Money Receive</label>
                     <input type="radio" id="money-receive" name="transaction-type" value="receive" hidden>
                 </div>
@@ -50,23 +53,23 @@
                 <label for="actype">Account</label>
                 <select name="" id="actype">
                 </select>
-    
+
                 <!-- Motive of Transaction -->
                 <label for="motive">Motive:</label>
                 <input type="text" id="motive" name="motive" required>
-    
+
                 <!-- Amount -->
                 <label for="amount">Amount:</label>
                 <input type="number" id="amount" name="amount" required>
-    
+
                 <!-- Date -->
                 <label for="date">Date:</label>
                 <input type="date" id="date" name="date" required>
 
                 <p id="errormsgpopup"></p>
-    
+
                 <div class="btn-container">
-                    <button type="submit" id="savebtn">Save</button>
+                    <button type="button" id="savebtn">Save</button>
                     <button type="button" id="cancelBtn">Cancel</button>
                 </div>
             </form>
@@ -82,13 +85,14 @@
                 <p class="time">12:00pm</p>
             </div>
         </div>
-        
+
 
     </section>
-    
+
 
     <button class="floating_btn" onclick="showPopup()"><i class="fa-solid fa-plus"></i></button>
 </body>
 <script src="../JS/contactinfo.js"></script>
 <script src="../JS/popup.js"></script>
+
 </html>

@@ -1,25 +1,10 @@
-
-@import url('https://fonts.googleapis.com/css2?family=AR+One+Sans&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
-
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: var(--main-color);
-}
-
 .container {
   height: 100vh;
   width: 100%;
-  background-color: #102629;
+  background-color: var(--white-color);
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadeout 1s ease-in-out 1s;
 }
 
 #logo {
@@ -27,33 +12,27 @@ body {
   height: 70vw;
   border-radius: 50%;
   border: 5px solid white;
-  animation: fade 1s ease-in-out;
+  animation: fadeUp 2s ease-in-out forwards; /* Adjust animation name and duration */
+  z-index: 10;
 }
 
 #info {
   position: absolute;
   bottom: 10%;
-  color: white;
+  color: var(--black-color);
   font-family: "Mulish", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   font-weight: 300;
 }
 
-@keyframes fade {
+@keyframes fadeUp {
   from {
+    transform: translateY(50%); /* Start from the bottom */
     opacity: 0;
-  } /* Start with transparency */
+  }
   to {
+    transform: translateY(-100%); /* Move up to its original position */
     opacity: 1;
-  } /* Fade to fully opaque */
-}
-
-@keyframes fadeout {
-  from {
-    opacity: 1;
-  } /* Start with transparency */
-  to {
-    opacity: 0;
-  } /* Fade to fully opaque */
+  }
 }

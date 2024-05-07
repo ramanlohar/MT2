@@ -46,7 +46,7 @@ savebtn.addEventListener("click", () => {
     const errormsgpopup = document.getElementById("errormsgpopup");
 
     // Check if any of the required fields are empty
-    if (!transactionType.value) {
+    if (!transactionType) {
         errormsgpopup.innerHTML = "Please choose a transaction type";
         none();
         return;
@@ -106,6 +106,7 @@ savebtn.addEventListener("click", () => {
     array.push(transaction); // Add new transaction
 
     localStorage.setItem("con_list" + active_con, JSON.stringify(array)); // Save updated data
+    hidePopup();
     loadtransactioninfo()
 });
 
@@ -120,6 +121,11 @@ function loadtransactioninfo() {
     let active_con = localStorage.getItem("active_con");
     let conlistmsgs = localStorage.getItem("con_list" + active_con);
 
+    if (!conlistmsgs) {
+        // Handle case where there are no transactions
+        return;
+    }
+
     conlistmsgs = JSON.parse(conlistmsgs);
 
     // Group messages by date
@@ -132,47 +138,120 @@ function loadtransactioninfo() {
         groupedMessages[date].push(element);
     });
 
+    // Sort dates in ascending order
+    const sortedDates = Object.keys(groupedMessages).sort((a, b) => new Date(a) - new Date(b));
+
     // Display messages with grouped dates
-    for (const date in groupedMessages) {
-        if (groupedMessages.hasOwnProperty(date)) {
-            // Create date header
-            let dateHeader = document.createElement("div");
-            dateHeader.classList.add("date-header");
-            dateHeader.textContent = date;
-            transaction_section.appendChild(dateHeader);
+    sortedDates.forEach(date => {
+        // Create date header
+        let dateHeader = document.createElement("div");
+        dateHeader.classList.add("date-header");
+        dateHeader.textContent = date;
+        transaction_section.appendChild(dateHeader);
 
-            // Create message boxes for each date
-            groupedMessages[date].forEach(element => {
-                let cdiv = document.createElement("div");
-                cdiv.classList.add(element.type);
+        // Create message boxes for each date
+        groupedMessages[date].forEach(element => {
+            let cdiv = document.createElement("div");
+            cdiv.classList.add(element.type);
 
-                cdiv.innerHTML = `
-                <div class="msg_box ${element.type + "d"}">
-                <h4 class="motive">${element.motive}</h4>
-                <h4 class="amount">${element.amount}</h4>
-                <h4 class="accounttype">${element.ac_name}</h4>
-                <p class="time">${getDateFromUniqueId(element.id)}</p>
-                <p class="time">${getTimeFromUniqueId(element.id)}</p>
-                </div>
-                <button class="del_btn dn"><i class="fa-solid fa-trash-can"></i></button>
-                `;
+            cdiv.innerHTML = `
+            <div class="msg_box ${element.type + "d"}">
+            <h4 class="motive">${element.motive}</h4>
+            <h4 class="amount">${element.amount}</h4>
+            <h4 class="accounttype">${element.ac_name}</h4>
+            <p class="time">${getDateFromUniqueId(element.id)}</p>
+            <p class="time">${getTimeFromUniqueId(element.id)}</p>
+            </div>
+            <button class="del_btn dn"><i class="fa-solid fa-trash-can"></i></button>
+            `;
 
-                transaction_section.appendChild(cdiv);
+            transaction_section.appendChild(cdiv);
 
-                // Add event listener to delete button
-                const delBtn = cdiv.querySelector('.del_btn');
-                delBtn.addEventListener('click', () => {
-                    deleteTransaction(element.id);
-                    loadtransactioninfo(); // Reload messages after deletion
-                });
-                
+            // Add event listener to delete button
+            const delBtn = cdiv.querySelector('.del_btn');
+            delBtn.addEventListener('click', () => {
+                deleteTransaction(element.id);
+                loadtransactioninfo(); // Reload messages after deletion
             });
-        }
+        });
+    });
+}
+
+
+
+// Function to delete a transaction
+// Function to delete a transaction
+function deleteTransaction(id) {
+    // Freeze background by adding an overlay
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    document.body.appendChild(overlay);
+
+    // Disable scrolling on the background page
+    document.body.style.overflow = 'hidden';
+
+    // Create confirmation box elements
+    const confirmationBox = document.createElement('div');
+    confirmationBox.classList.add('confirmation-box');
+
+    const confirmationMessage = document.createElement('p');
+    confirmationMessage.textContent = "Are you sure you want to delete this transaction?";
+    confirmationBox.appendChild(confirmationMessage);
+
+    const confirmBtn = document.createElement('button');
+    confirmBtn.textContent = "Confirm";
+    confirmBtn.classList.add('confirm-btn');
+    confirmationBox.appendChild(confirmBtn);
+
+    const cancelBtn = document.createElement('button');
+    cancelBtn.textContent = "Cancel";
+    cancelBtn.classList.add('cancel-btn');
+    confirmationBox.appendChild(cancelBtn);
+
+    // Append confirmation box to document body
+    document.body.appendChild(confirmationBox);
+
+    // Event listener for confirm button
+    confirmBtn.addEventListener('click', () => {
+        removeConfirmationBox();
+        removeOverlay();
+        document.body.style.overflow = ''; // Re-enable scrolling
+        performDelete(id);
+    });
+
+    // Event listener for cancel button
+    cancelBtn.addEventListener('click', () => {
+        removeConfirmationBox();
+        removeOverlay();
+        document.body.style.overflow = ''; // Re-enable scrolling
+    });
+
+    // Event listener for clicking anywhere on the page to close the confirmation box
+    overlay.addEventListener('click', () => {
+        removeConfirmationBox();
+        removeOverlay();
+        document.body.style.overflow = ''; // Re-enable scrolling
+    });
+}
+
+// Function to remove the confirmation box from the document
+function removeConfirmationBox() {
+    const confirmationBox = document.querySelector('.confirmation-box');
+    if (confirmationBox) {
+        confirmationBox.remove();
     }
 }
 
-// Function to delete a transaction
-function deleteTransaction(id) {
+// Function to remove the overlay from the document
+function removeOverlay() {
+    const overlay = document.querySelector('.overlay');
+    if (overlay) {
+        overlay.remove();
+    }
+}
+
+// Function to perform the actual deletion after confirmation
+function performDelete(id) {
     let active_con = localStorage.getItem("active_con");
     let conlist = localStorage.getItem("con_list" + active_con);
 
@@ -188,30 +267,7 @@ function deleteTransaction(id) {
     }
 }
 
-// Event listener for delete button
-function attachDeleteEventListeners() {
-    const delBtns = document.querySelectorAll('.del_btn');
-    delBtns.forEach(delBtn => {
-        delBtn.addEventListener('click', (event) => {
-            const messageId = event.target.parentElement.querySelector('.time').textContent;
-            // Show confirmation modal
-            confirmationModal.style.display = "block";
-            // Save the transaction ID in a global variable to access it later
-            window.transactionIdToDelete = messageId;
-        });
-    });
-}
 
-// Event listener for confirm delete button
-confirmDeleteBtn.addEventListener('click', () => {
-    deleteTransaction(window.transactionIdToDelete);
-    confirmationModal.style.display = "none"; // Hide confirmation modal
-});
-
-// Event listener for cancel delete button
-cancelDeleteBtn.addEventListener('click', () => {
-    confirmationModal.style.display = "none"; // Hide confirmation modal
-});
 
 
 

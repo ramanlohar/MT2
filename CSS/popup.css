@@ -67,7 +67,7 @@
     cursor: pointer;
 }
 
-.popup-form button[type="submit"] {
+.popup-form #savebtn, button[type="submit"] {
     background-color: #007bff;
     color: #fff;
 }
