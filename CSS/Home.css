@@ -114,7 +114,7 @@ footer {
     /* filter: invert(100%); */
 }
 
-footer button ,.edit,.delete {
+footer button ,.edit,.delete,.edit_btn {
     background-color: transparent;
     border: none;
     font-size: x-large;
@@ -126,10 +126,10 @@ footer button ,.edit,.delete {
     display: none;
 }
 
-.edit,.delete {
+.edit,.delete,.edit_btn {
     font-size: large;
     margin-right: 10px;
-    color: blue;
+    color: var(--black-color);
 }
 
 .delete {

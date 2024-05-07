@@ -1,0 +1,119 @@
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 999; /* Ensure the overlay is on top of other elements */
+}
+
+/* Edit Popup */
+.edit-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure the popup is on top of the overlay */
+}
+
+.edit-popup h2 {
+    margin-top: 0;
+    color: var(--black-color);
+    font-size: large;
+}
+
+.edit-popup form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-popup label {
+    font-size: medium;
+    color: var(--black-color);
+    margin-bottom: 5px;
+}
+
+.edit-popup input[type="text"] {
+    font-size: 20px;
+    padding: 8px;
+    background-color: var(--white-color);
+    color: var(--black-color);
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.edit-popup .error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.edit-popup button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: var(--black-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.edit-popup button:hover {
+    background-color: #45a049;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 999; /* Ensure it appears above other elements */
+}
+
+.confirmation-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--white-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure it appears above the overlay */
+}
+
+.confirmation-popup p {
+    margin-bottom: 20px;
+    color: var(--black-color);
+    font-size: 14px;
+}
+
+.confirmation-popup button {
+    padding: 8px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.confirmation-popup button:focus {
+    outline: none;
+}
+
+#confirmBtn {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+#cancelBtn2 {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
