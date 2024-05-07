@@ -47,10 +47,16 @@ function loadcontacts() {
         }
     }
 
-    // Sort contacts alphabetically by name
     contacts.sort((a, b) => {
-        return a.name.localeCompare(b.name);
+        // Extract timestamp part and convert to numbers
+        const timestampA = parseInt(a.staketime.replace('ID_', ''));
+        const timestampB = parseInt(b.staketime.replace('ID_', ''));
+    
+        // Compare timestamps
+        return timestampB - timestampA; // Descending order (newest first)
     });
+    
+    
 
     // Display sorted contacts
     contacts.forEach(contact => {
