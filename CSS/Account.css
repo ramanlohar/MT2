@@ -2,90 +2,127 @@
 
 /* Add styles for the #account element */
 #account {
-    background-color: var(--white-color);
-    padding: 20px;
-    margin-bottom: 20px;
+  background-color: var(--white-color);
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 /* Correct spellings */
 .icons {
-    width: 30px;
-    height: 30px;
-    margin: 0 10px;
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
 }
 
 /* Home.css */
 
-/* Styles for the table */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid var(--black-color);
-}
-
-/* Styles for table header */
-th {
+    margin: 10px 5%;
+    width: 90%;
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Adjust the spacing between rows */
+  }
+  
+  tr {
+    margin: 10px;
+  }
+  
+  th,
+  td {
     padding: 10px;
-    text-align: left;
-    font-size: 1.6rem;
-    color: var(--black-color);
+    text-align: center;
+  }
+  
+  /* Styles for table header */
+  th {
     background-color: var(--bg-color);
-    border: 1px solid var(--black-color);
-    text-align: center;
-}
-
-/* Styles for table data */
-td {
     color: var(--black-color);
-    padding: 10px;
-    border: 1px solid var(--black-color);
     font-size: 1.6rem;
-    text-align: center;
-}
-
+    border-top: 1px solid var(--black-color); /* Add border to the top of each cell */
+    border-bottom: 1px solid var(--black-color); /* Add border to the bottom of each cell */
+    border-left: 1px solid var(--black-color); /* Add left border */
+    border-right: 1px solid var(--black-color); /* Add right border */
+    /* border-radius: 10px; */
+  }
+  
+  /* Styles for table data */
+  td {
+    color: var(--black-color);
+    font-size: 1.6rem;
+    border-top: 1px solid var(--black-color); /* Add border to the top of each cell */
+    border-bottom: 1px solid var(--black-color); /* Add border to the bottom of each cell */
+    border-left: 1px solid var(--black-color); /* Add left border */
+    border-right: 1px solid var(--black-color); /* Add right border */
+    /* border-radius: 10px; */
+    text-transform: capitalize;
+  }
+  
+  /* Apply rounded corners to the first and last cells of each row */
+  th:first-child,
+  td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  
+  th:last-child,
+  td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  
 /* Rest of your CSS styles go here */
 
 /* Account.css */
 
 /* Style for the options section */
 .optionsSection {
-    display: none; /* Initially hide the options section */
-    position: fixed;
-    top: 65px; /* Adjust as needed */
-    right: 0px; /* Adjust as needed */
-    background-color: var(--white-color);
-    border: 1px solid var(--black-color);
-    padding: 20px;
-    z-index: 11;
-    color: var(--black-color);
-    border-radius: 10px;
-    font-size: large;
+  display: none; /* Initially hide the options section */
+  position: fixed;
+  top: 65px; /* Adjust as needed */
+  right: 0px; /* Adjust as needed */
+  background-color: var(--white-color);
+  border: 1px solid var(--black-color);
+  padding: 20px;
+  z-index: 11;
+  color: var(--black-color);
+  border-radius: 10px;
+  font-size: large;
 }
 
 .optionsSection ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .optionsSection ul li {
-    cursor: pointer;
-    margin-bottom: 5px;
+  cursor: pointer;
+  margin-bottom: 5px;
 }
 
 .hfdiv {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 #back {
-    color: var(--black-color);
-    background-color: transparent;
-    border: none;
-    font-size: 30px;
-    padding-right: 20px;
+  color: var(--black-color);
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  padding-right: 20px;
 }
 
 .edit_td {
-    display: flex;
+  display: flex;
+}
+
+.t_a_div {
+  padding: 15px;
+  color: var(--black-color);
+  font-size: 13px;
+  border: 1px solid var(--black-color);
+  width: 90%;
+  margin: 0px 5%;
+  border-radius: 10px;
 }

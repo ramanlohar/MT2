@@ -32,7 +32,7 @@
     opacity: 0;
   }
   to {
-    transform: translateY(-100%); /* Move up to its original position */
+    transform: translateY(-0%); /* Move up to its original position */
     opacity: 1;
   }
 }

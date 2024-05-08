@@ -34,6 +34,7 @@ savebtn.addEventListener("click", () => {
 });
 
 function loadu_accounts() {
+    let total_amount = 0;
     account_section_table.innerHTML = `
         <tr>
             <th>Account Name</th>
@@ -60,6 +61,8 @@ function loadu_accounts() {
                 </td>
             `;
 
+            total_amount += parseFloat(u_account.total);
+
             account_section_table.appendChild(row);
 
             // Add event listener to the delete button
@@ -73,6 +76,7 @@ function loadu_accounts() {
             });
         }
     }
+    document.getElementById("total_amount_a").innerHTML = "Amount of All Accounts : " + total_amount;
 }
 
 function deleteu_account(id) {

@@ -63,7 +63,7 @@ function loadcontacts() {
         let cdiv = document.createElement("div");
         cdiv.classList.add("contact");
         
-        cdiv.innerHTML = `<div class="co_contact"><i class="fa-solid fa-circle-user"></i> <div class="con_info_div"> <p class="p_name">${contact.name}</p> <p class="mobile_no">${formatMobileNumber(contact.mobile)}</p></div></div>
+        cdiv.innerHTML = `<div class="co_contact"> <span class="first_letter"> ${firstLetter(contact.name)} </span> <div class="con_info_div"> <p class="p_name">${contact.name}</p> <p class="mobile_no">${formatMobileNumber(contact.mobile)}</p></div></div>
         <div>
             <button class="delete dn" data-id="${contact.id}"><i class="fa-solid fa-trash-can"></i></button>
             <button class="edit dn" data-id="${contact.id}"><i class="fa-solid fa-file-pen"></i></button>
@@ -140,6 +140,14 @@ function generateUniqueId() {
     return uniqueId;
 }
 
+
+function firstLetter(text) {
+    if (text.length > 0) {
+        return text.charAt(0);
+    } else {
+        return `<i class="fa-solid fa-circle-user"></i>`;
+    }
+}
 
 
 

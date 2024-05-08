@@ -117,6 +117,7 @@ savebtn.addEventListener("click", () => {
 let transaction_section = document.getElementById("transaction_section");
 
 function loadtransactioninfo() {
+    let total_amount = 0;
     transaction_section.innerHTML = "";
 
     let active_con = localStorage.getItem("active_con");
@@ -166,6 +167,12 @@ function loadtransactioninfo() {
             <button class="del_btn dn"><i class="fa-solid fa-trash-can"></i></button>
             `;
 
+            if(element.type == "send"){
+                total_amount -= element.amount;
+            }else{
+                total_amount += element.amount;
+            }
+
             transaction_section.appendChild(cdiv);
 
                       
@@ -178,6 +185,8 @@ function loadtransactioninfo() {
             });
         });
     });
+
+    document.getElementById("total_amount_p").innerHTML = `Net Amount is : ${total_amount}`
 }
 
 
@@ -389,7 +398,6 @@ function generateUniqueId2() {
     const uniqueId = 'ID_' + timestamp; // Combine with a prefix (e.g., 'ID_')
     return uniqueId;
 }
-
 
 
 loadacoptions();

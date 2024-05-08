@@ -144,3 +144,17 @@ footer button ,.edit,.delete,.edit_btn {
 .co_contact {
     width: 100%;
 }
+
+.first_letter {
+    background-color: var(--black-color);
+    padding: 10px;
+    width: 55px;
+    height: 50px;
+    font-size: 30px;
+    color: var(--white-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-weight: 700;
+}

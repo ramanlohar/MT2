@@ -15,7 +15,7 @@ header {
     justify-content: space-between;
     color: var(--black-color);
     border-bottom: 2px solid var(--black-color);
-    height: 90px;
+    height: 100px;
     top: 0;
     z-index: 10;
     background-color: var(--white-color);
@@ -23,6 +23,7 @@ header {
 header .infodiv{
     width: 100%;
     padding: 20px;
+    padding-top: 15px;
 }
 
 header .infodiv h2{
