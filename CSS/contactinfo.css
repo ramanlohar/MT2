@@ -137,7 +137,7 @@ header .infodiv p{
 /* CSS for common date headers */
 .date-header {
     position: sticky;
-    top : 90px;
+    top : 100px;
     font-weight: bold;
     margin-top: 10px;
     margin-bottom: 5px;

@@ -8,6 +8,18 @@
     <link rel="stylesheet" href="../CSS/theme.css">
     <link rel="stylesheet" href="../CSS/splash.css">
     <script defer src="../JS/theme.js"></script>
+    <script>
+        function redirect(page) {
+            setTimeout(() => {
+                window.location.href = page;
+            }, 1500);
+        }
+        if(localStorage.getItem("signupInfo")){
+            redirect("Home.html");
+        }else{
+            redirect("../USER/HTML/signup.html");
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -15,9 +27,4 @@
         <h2 id="info">Raman Lohar</h2>
     </div>
 </body>
-<script>
-    setTimeout(() => {
-        window.location.href = "Home.html"
-    }, 1500);
-</script>
 </html>
