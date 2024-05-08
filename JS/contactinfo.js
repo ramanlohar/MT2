@@ -168,9 +168,9 @@ function loadtransactioninfo() {
             `;
 
             if(element.type == "send"){
-                total_amount -= element.amount;
+                total_amount -= parseFloat(element.amount);
             }else{
-                total_amount += element.amount;
+                total_amount += parseFloat(element.amount);
             }
 
             transaction_section.appendChild(cdiv);
