@@ -49,12 +49,13 @@ function loadcontacts() {
 
     contacts.sort((a, b) => {
         // Extract timestamp part and convert to numbers
-        const timestampA = parseInt(a.staketime.replace('ID_', ''));
-        const timestampB = parseInt(b.staketime.replace('ID_', ''));
+        const timestampA = parseInt(a.staketime.toString().replace('ID_', ''));
+        const timestampB = parseInt(b.staketime.toString().replace('ID_', ''));
     
         // Compare timestamps
         return timestampB - timestampA; // Descending order (newest first)
     });
+    
     
     
 
@@ -116,6 +117,10 @@ document.getElementById("User_Account").addEventListener("click",()=>{
     window.location.href = "Accounts.html";
 })
 
+document.getElementById("App_Account").addEventListener("click", () => {
+    window.location.href = "userinfo.html";
+});
+
 
 function formatMobileNumber(mobile) {
     let numericMobile = mobile.replace(/\D/g, '');
@@ -148,6 +153,39 @@ function firstLetter(text) {
         return `<i class="fa-solid fa-circle-user"></i>`;
     }
 }
+
+
+const searchInput = document.getElementById("searchInput");
+let emptysearch = document.getElementById("emptysearch");
+
+emptysearch.addEventListener("click",()=>{
+    searchInput.value = ""
+    emptysearch.style.display = "none";
+    loadcontacts();
+})
+
+searchInput.addEventListener("input", () => {
+    emptysearch.style.display = "block";
+    
+    if(searchInput.value == ""){
+        emptysearch.style.display = "none";        
+    }
+
+    const searchTerm = searchInput.value.toLowerCase();
+    const contacts = document.querySelectorAll(".contact");
+
+    contacts.forEach(contact => {
+        const name = contact.querySelector(".p_name").innerText.toLowerCase();
+        const mobile = contact.querySelector(".mobile_no").innerText;
+
+        if (name.includes(searchTerm) || mobile.includes(searchTerm)) {
+            contact.style.display = "block";
+        } else {
+            contact.style.display = "none";
+        }
+    });
+});
+
 
 
 

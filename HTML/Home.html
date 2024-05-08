@@ -6,21 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../CSS/theme.css">
+    <!-- <link rel="stylesheet" href="../CSS/Account.css"> -->
     <link rel="stylesheet" href="../CSS/Home.css">
-    <link rel="stylesheet" href="../CSS/Account.css">
     <link rel="stylesheet" href="../CSS/popup.css">
     <link rel="stylesheet" href="../CSS/popuptwo.css">
     <script src="https://kit.fontawesome.com/a9d95cc0a7.js" crossorigin="anonymous"></script>
     <style>
         .text-with-border,
-        .home {
+        .home i {
             color: var(--black-color);
             -webkit-text-stroke: 1px var(--black-color);
             background-clip: text;
         }
 
-        .f_account,
-        .a_account {
+        .f_account i,
+        .a_account i {
             color: var(--white-color);
             -webkit-text-stroke: 1px var(--black-color);
             background-clip: text;
@@ -37,13 +37,23 @@
 <body>
     <script src="../JS/theme.js"></script>
     <header>
-        <h1>Money Tracker</h1>
-        <div class="btns">
-            <button class="h_btn" onclick="showPopup()"><i class="fa-solid fa-user-plus"></i></button>
-            <button class="h_btn" id="edit_contacts"><i class="fa-solid fa-user-pen"></i></button>
-            <!-- <button class="h_btn" id="settings"><i class="fa-solid fa-gear"></i></i></button> -->
+        <div class="hf_div">
+            <h1>Money Tracker</h1>
+            <div class="btns">
+                <button class="h_btn" onclick="showPopup()"><i class="fa-solid fa-user-plus"></i></button>
+                <button class="h_btn" id="edit_contacts"><i class="fa-solid fa-user-pen"></i>
+                <!-- <button class="h_btn" id="settings"><i class="fa-solid fa-gear"></i></i></button> -->
+            </div>
+        </div>
+        <div class="hs_div">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search contacts...">
+                <button id="emptysearch" class="dn"><i class="fas fa-x"></i></button>
+            </div>      
+
         </div>
     </header>
+        
 
     <div id="popup" class="popup">
         <div class="popup-content">
@@ -83,6 +93,7 @@
 
 
     <section id="contact_section">
+        
 
         <div class="contact" for="1">
             <div><i class="fa-solid fa-circle-user"></i> Raman Lohar</div>

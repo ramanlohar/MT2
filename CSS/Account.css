@@ -1,5 +1,51 @@
 /* Home.css */
 
+header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: var(--white-color);
+  /* background-color: #102629; */
+  border-bottom: 2px solid var(--black-color);
+
+}
+
+header h1 {
+  /* color: white;  */
+  color: var(--black-color); 
+  font-size: 2.8rem;   
+}
+
+header .btns button{
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  color: var(--black-color); 
+  /* color: white;     */
+  font-weight: bold;
+}
+
+header .btns button:first-child{
+  margin-right: 15px;
+}
+
+header .btns button:last-child{
+  margin-left: 10px;
+}
+
+section {
+  margin-top: 100px;
+  margin-bottom: 69px;
+  background-color: var(--white-color);
+  /* height: calc(100vh - 70px - 90px); */
+}
+
 /* Add styles for the #account element */
 #account {
   background-color: var(--white-color);
