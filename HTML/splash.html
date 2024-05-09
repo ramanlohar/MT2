@@ -15,7 +15,12 @@
             }, 1500);
         }
         if(localStorage.getItem("signupInfo")){
-            redirect("Home.html");
+            let security_screen = localStorage.getItem("security_screen");
+            if(security_screen == "true"){
+                redirect("security.html");
+            }else{
+                redirect("Home.html");
+            }
         }else{
             redirect("../USER/HTML/signup.html");
         }

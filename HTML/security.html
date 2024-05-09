@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Numeric Keyboard</title>
+<link rel="stylesheet" href="../CSS/theme.css">
+<link rel="stylesheet" href="../CSS/security.css">
+<script src="https://kit.fontawesome.com/a9d95cc0a7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<script src="../JS/theme.js"></script>
+
+<div class="image_div">
+    <img src="../../IMAGES/logo.png" alt="">
+</div>
+
+<div class="keyboard">
+    <input type="password" class="input-field" id="inputField" readonly>
+    <div class="row">
+        <button class="key" onclick="appendToInput('1')">1</button>
+        <button class="key" onclick="appendToInput('2')">2</button>
+        <button class="key" onclick="appendToInput('3')">3</button>
+    </div>
+    <div class="row">
+        <button class="key" onclick="appendToInput('4')">4</button>
+        <button class="key" onclick="appendToInput('5')">5</button>
+        <button class="key" onclick="appendToInput('6')">6</button>
+    </div>
+    <div class="row">
+        <button class="key" onclick="appendToInput('7')">7</button>
+        <button class="key" onclick="appendToInput('8')">8</button>
+        <button class="key" onclick="appendToInput('9')">9</button>
+    </div>
+    <div class="row">
+        <button class="key" onclick="appendToInput('0')">0</button>
+        <button class="key" onclick="removeLastCharacter()"><i class="fa-solid fa-delete-left"></i></button>
+    </div>
+</div>
+
+<script>
+    function appendToInput(value) {
+        var inputField = document.getElementById('inputField');
+        inputField.value += value;
+        check(inputField.value); // Logging the input field's value
+    }
+
+    function removeLastCharacter() {
+        var inputField = document.getElementById('inputField');
+        inputField.value = inputField.value.slice(0, -1);
+        check(inputField.value); // Logging the input field's value
+    }
+
+    function check(pin){
+      // console.log(pin);
+      let security_pin = localStorage.getItem("security_pin");
+      if(security_pin){
+        if(security_pin == pin){
+          window.location.href = "home.html"
+        }
+      }
+      else{
+        alert("please set the security pin");
+      }
+    }
+</script>
+
+</body>
+</html>

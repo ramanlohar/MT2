@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Infomation</title>
     <link rel="stylesheet" href="../CSS/theme.css">
     <link rel="stylesheet" href="../CSS/userinfo.css">
+    <link rel="stylesheet" href="../CSS/togglebtn.css">
     <script src="https://kit.fontawesome.com/a9d95cc0a7.js" crossorigin="anonymous"></script>
     <style>
         .text-with-border,
@@ -23,12 +25,35 @@
         }
     </style>
 </head>
+
 <body>
     <script src="../JS/theme.js"></script>
     <header>
         <h1>User Information</h1>
     </header>
 
+    <section>
+        <h2>Settings</h2>
+        <p class="sub_h">Accounts</p>
+        <div id="accounts">
+            <input type="text" name="" id="username" readonly >
+            <input type="number" name="" id="mobile" readonly>
+            <input type="email" name="" id="email" readonly>
+        </div>
+        <p class="sub_h">Security</p>
+        <div id="security">
+            <p id="screen">Security screen</p>
+            <label class="switch">
+                <input type="checkbox" id="toggleBtn">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div id="securityInput" style="display: none;">
+            <input type="password" id="pin" placeholder="Enter PIN">
+            <input type="password" id="confirmPin" placeholder="Confirm PIN">
+            <button id="savePin">Save</button>
+        </div>
+    </section>
 
     <footer>
         <button id="User_Home" class="home"><i class="fa-solid fa-house"></i><br>
@@ -41,6 +66,83 @@
             <p>User</p>
         </button>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleBtn = document.getElementById('toggleBtn');
+            const securityInput = document.getElementById('securityInput');
+            const savePinBtn = document.getElementById('savePin');
+            const pinInput = document.getElementById('pin');
+            const confirmPinInput = document.getElementById('confirmPin');
+
+            // Check if security screen should be toggled on or off
+            const securityScreen = localStorage.getItem('security_screen');
+            if (securityScreen === 'true') {
+                toggleBtn.checked = true;
+                let securityPin = localStorage.getItem('security_pin');
+                if (securityPin) {
+                    // Security pin not set, show security input
+                    securityInput.style.display = 'none';
+                }
+                else {
+                    securityInput.style.display = 'block';
+
+                }
+            }
+
+            toggleBtn.addEventListener('change', function () {
+                if (this.checked) {
+                    // Toggle is on
+                    localStorage.setItem('security_screen', 'true');
+                    let securityPin = localStorage.getItem('security_pin');
+                    if (securityPin === null) {
+                        // Security pin not set, show security input
+                        securityInput.style.display = 'block';
+                    }
+                } else {
+                    // Toggle is off
+                    localStorage.setItem('security_screen', 'false');
+                    securityInput.style.display = 'none';
+                }
+            });
+
+            savePinBtn.addEventListener('click', function () {
+                const pin = pinInput.value;
+                const confirmPin = confirmPinInput.value;
+                if (pin === confirmPin) {
+                    // Save pin to local storage
+                    localStorage.setItem('security_pin', pin);
+                    localStorage.setItem('security_screen', 'true');
+                    securityInput.style.display = 'none';
+                } else {
+                    alert("PINs don't match. Please try again.");
+                }
+            });
+        });
+
+        let securityPin = localStorage.getItem('security_pin');
+        if (securityPin) {
+            // Security pin not set, show security input
+            securityInput.style.display = 'none';
+        }
+
+        function loaduserinfo() {
+            let info = localStorage.getItem("signupInfo");
+
+            let name = document.getElementById("username");
+            let mobile = document.getElementById("mobile");
+            let email = document.getElementById("email");
+
+            info = JSON.parse(info);
+
+            name.value = info.username;
+            mobile.value = info.mobile;
+            email.value = info.email;
+
+        }
+        loaduserinfo();
+    </script>
 </body>
 <script src="../JS/userinfo.js"></script>
+
 </html>
