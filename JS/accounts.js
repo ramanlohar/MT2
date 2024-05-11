@@ -61,8 +61,8 @@ function loadu_accounts() {
 
             row.innerHTML = `                
                 <td>${u_account.name}</td>
-                <td>${u_account.total}</td>
-                <td>${u_account.initial}</td>
+                <td>${fixToTwoDecimalPlaces(u_account.total)}</td>
+                <td>${fixToTwoDecimalPlaces(u_account.initial)}</td>
                 <td class="edit_td">
                     <button class="delete" data-id="${u_account.id}"><i class="fa-solid fa-trash-can"></i></button>
                     <button class="edit_btn" data-id="${u_account.id}"><i class="fa-solid fa-file-pen"></i></button>
@@ -84,7 +84,7 @@ function loadu_accounts() {
             });
         }
     }
-    document.getElementById("total_amount_a").innerHTML = "Amount of All Accounts : " + total_amount;
+    document.getElementById("total_amount_a").innerHTML = "Amount of All Accounts : " + fixToTwoDecimalPlaces(total_amount);
 }
 
 function deleteu_account(id) {
@@ -235,6 +235,10 @@ function hideEditPopup() {
         overlay.remove();
         popup.remove();
     }
+}
+
+function fixToTwoDecimalPlaces(number) {
+    return parseFloat(number).toFixed(2);
 }
 
 document.getElementById("User_Account").addEventListener("click", () => {
